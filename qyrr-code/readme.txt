@@ -1,9 +1,13 @@
 === Qyrr - simply and modern QR-Code creation ===
 Contributors: patrickposner
-Tags: qr code, qr, qr-code, qr code generator, qr code tracking, qr code tracker
-Requires at least: 6.2
-Tested up to: 6.6
-Stable tag: 2.0.4
+Tags: qr code, qr, qr-code, qr code generator, qr code tracking
+Requires at least: 6.5
+Tested up to: 6.7
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 2.0.5
+
+Create, manage and track fully customizable QR Codes without any Third-Party-APIs.
 
 == Description ==
 
@@ -180,6 +184,11 @@ Simply use the language switcher and translate all settings.
 
 
 == Changelog ==
+
+= 2.0.5 =
+
+* upgrade dependencies
+* WP 6.7 compatibility
 
 = 2.0.4 =
 
