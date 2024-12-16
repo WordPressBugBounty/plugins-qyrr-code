@@ -4,7 +4,7 @@
  * Plugin Name:       Qyrr-Code
  * Plugin URI:        https://patrickposner.com/plugins/qyrr
  * Description:       QR-Code generation, management and tracking as it should be.
- * Version:           2.0.5
+ * Version:           2.0.6
  * Author:            Patrick Posner
  * Author URI:        https://patrickposner.com
  * License:           GPL-2.0+
@@ -15,14 +15,9 @@
  */
 define( 'QYRR_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'QYRR_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
-define( 'QYRR_VERSION', '2.0.5' );
+define( 'QYRR_VERSION', '2.0.6' );
 // load setup.
 require_once QYRR_PATH . '/inc/freemius-setup.php';
-// localize.
-add_action( 'init', function () {
-    $textdomain_dir = plugin_basename( dirname( __FILE__ ) ) . '/languages';
-    load_plugin_textdomain( 'qyrr-code', false, $textdomain_dir );
-} );
 add_action( 'plugins_loaded', 'qyrr_run_plugin' );
 // run plugin.
 if ( !function_exists( 'qyrr_run_plugin' ) ) {
