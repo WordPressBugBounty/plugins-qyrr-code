@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 6.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 
 Create, manage and track fully customizable QR Codes without any Third-Party-APIs.
 
@@ -184,6 +184,9 @@ Simply use the language switcher and translate all settings.
 
 
 == Changelog ==
+
+= 2.0.7 =
+* SDK upgrade
 
 = 2.0.6 =
 
