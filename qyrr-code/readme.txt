@@ -2,10 +2,10 @@
 Contributors: patrickposner
 Tags: qr code, qr, qr-code, qr code generator, qr code tracking
 Requires at least: 6.5
-Tested up to: 6.7
+Tested up to: 6.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 
 Create, manage and track fully customizable QR Codes without any Third-Party-APIs.
 
@@ -184,6 +184,11 @@ Simply use the language switcher and translate all settings.
 
 
 == Changelog ==
+
+= 2.0.8 =
+
+* vulnerability fix (uploader)
+* SDK upgrade
 
 = 2.0.7 =
 * SDK upgrade
