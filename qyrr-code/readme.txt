@@ -1,11 +1,11 @@
 === Qyrr - simply and modern QR-Code creation ===
-Contributors: patrickposner
+Contributors: wpchill
 Tags: qr code, qr, qr-code, qr code generator, qr code tracking
 Requires at least: 6.5
 Tested up to: 6.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.0.8
+Stable tag: 2.0.9
 
 Create, manage and track fully customizable QR Codes without any Third-Party-APIs.
 
@@ -59,7 +59,7 @@ Qyrr Pro extends the feature set of the free version with some powerful features
 
 [youtube https://www.youtube.com/watch?v=zA72LmyITjc]
 
-Get it now on [patrickposner.com/qyrr/](https://patrickposner.com/qyrr/)
+Get it now on [qyrrwp.com/](https://qyrrwp.com/)
 
 **Sources**
 
@@ -136,7 +136,7 @@ Everything from the free version plus:
 - auto-generate QR Codes for all kinds of custom post types
 - global template for QR Codes and auto-apply it to new QR codes
 
-Get it now on [patrickposner.com/qyrr/](https://patrickposner.com/qyrr/)
+Get it now on [qyrrwp.com/](https://qyrrwp.com/)
 
 == Support ==
 
@@ -184,9 +184,10 @@ Simply use the language switcher and translate all settings.
 
 
 == Changelog ==
+= 2.0.8 - 11.02.2026 =
+* Updated: Owner and readme.
 
 = 2.0.8 =
-
 * vulnerability fix (uploader)
 * SDK upgrade
 
