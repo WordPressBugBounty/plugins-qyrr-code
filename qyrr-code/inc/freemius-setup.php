@@ -8,23 +8,24 @@ if ( !function_exists( 'qyrr_fs' ) ) {
             // Include Freemius SDK.
             require_once dirname( __FILE__ ) . '/freemius/start.php';
             $qyrr_fs = fs_dynamic_init( array(
-                'id'              => '5292',
-                'slug'            => 'qyrr-code',
-                'premium_slug'    => 'qr-premium',
-                'type'            => 'plugin',
-                'public_key'      => 'pk_4ecb1bb8e14d1ef36183b1f5b032f',
-                'is_premium'      => false,
-                'premium_suffix'  => 'Pro',
-                'has_addons'      => false,
-                'has_paid_plans'  => true,
-                'has_affiliation' => 'selected',
-                'menu'            => array(
+                'id'               => '5292',
+                'slug'             => 'qyrr-code',
+                'premium_slug'     => 'qr-premium',
+                'type'             => 'plugin',
+                'public_key'       => 'pk_4ecb1bb8e14d1ef36183b1f5b032f',
+                'is_premium'       => false,
+                'premium_suffix'   => 'Pro',
+                'has_addons'       => false,
+                'has_paid_plans'   => true,
+                'has_affiliation'  => 'selected',
+                'menu'             => array(
                     'slug'        => 'edit.php?post_type=qr',
                     'contact'     => false,
                     'support'     => false,
                     'affiliation' => false,
                 ),
-                'is_live'         => true,
+                'is_live'          => true,
+                'is_org_compliant' => true,
             ) );
         }
         return $qyrr_fs;

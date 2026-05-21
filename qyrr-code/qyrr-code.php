@@ -4,7 +4,7 @@
  * Plugin Name:       Qyrr-Code
  * Plugin URI:        https://qyrrwp.com
  * Description:       QR-Code generation, management and tracking as it should be.
- * Version:           2.0.9
+ * Version:           2.0.10
  * Author:            WPChill
  * Author URI:        https://wpchill.com
  * License:           GPL-2.0+
@@ -19,7 +19,7 @@
  */
 define( 'QYRR_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'QYRR_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
-define( 'QYRR_VERSION', '2.0.9' );
+define( 'QYRR_VERSION', '2.0.10' );
 // load setup.
 require_once QYRR_PATH . '/inc/freemius-setup.php';
 add_action( 'plugins_loaded', 'qyrr_run_plugin' );
