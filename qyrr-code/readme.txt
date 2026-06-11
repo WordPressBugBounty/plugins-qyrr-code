@@ -2,10 +2,10 @@
 Contributors: wpchill
 Tags: qr code, qr, qr-code, qr code generator, qr code tracking
 Requires at least: 6.5
-Tested up to: 6.9
+Tested up to: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.0.10
+Stable tag: 2.0.11
 
 Create, manage and track fully customizable QR Codes without any Third-Party-APIs.
 
@@ -184,6 +184,12 @@ Simply use the language switcher and translate all settings.
 
 
 == Changelog ==
+= 2.0.11 - 11.06.2026 =
+* Fixed: QR Code download button compatibility issue.
+
+= 2.0.10 - 20.05.2026 =
+* Improved: code stability and safety improvements.
+
 = 2.0.8 - 11.02.2026 =
 * Updated: Owner and readme.
 
