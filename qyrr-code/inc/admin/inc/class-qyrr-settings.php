@@ -60,10 +60,13 @@ class Qyrr_Settings {
             true
         );
         $args = array(
-            'screen'  => 'settings',
-            'version' => QYRR_VERSION,
-            'logo'    => QYRR_URL . '/assets/qyrr-logo.svg',
-            'is_pro'  => false,
+            'screen'        => 'settings',
+            'version'       => QYRR_VERSION,
+            'logo'          => QYRR_URL . '/assets/qyrr-logo.svg',
+            'is_pro'        => qyrr_fs()->is_plan_or_trial__premium_only( 'pro' ),
+            'upgrade_url'   => qyrr_fs()->get_upgrade_url(),
+            'profile_url'   => admin_url( 'profile.php#application-passwords-section' ),
+            'rest_endpoint' => rest_url( 'qyrr/v1/generate' ),
         );
         wp_localize_script( 'qyrr-code-settings', 'options', $args );
         // Make the blocks translatable.

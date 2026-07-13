@@ -4,7 +4,7 @@
  * Plugin Name:       Qyrr-Code
  * Plugin URI:        https://qyrrwp.com
  * Description:       QR-Code generation, management and tracking as it should be.
- * Version:           2.0.11
+ * Version:           2.0.12
  * Author:            WPChill
  * Author URI:        https://wpchill.com
  * License:           GPL-2.0+
@@ -19,9 +19,13 @@
  */
 define( 'QYRR_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'QYRR_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
-define( 'QYRR_VERSION', '2.0.11' );
+define( 'QYRR_VERSION', '2.0.12' );
 // load setup.
 require_once QYRR_PATH . '/inc/freemius-setup.php';
+// Composer autoloader (endroid/qr-code and dependencies).
+if ( file_exists( QYRR_PATH . '/vendor/autoload.php' ) ) {
+    require_once QYRR_PATH . '/vendor/autoload.php';
+}
 add_action( 'plugins_loaded', 'qyrr_run_plugin' );
 // run plugin.
 if ( !function_exists( 'qyrr_run_plugin' ) ) {
@@ -36,6 +40,7 @@ if ( !function_exists( 'qyrr_run_plugin' ) ) {
         require_once QYRR_PATH . '/inc/class-qyrr-admin.php';
         require_once QYRR_PATH . '/inc/admin/inc/class-qyrr-settings.php';
         require_once QYRR_PATH . '/inc/class-qyrr-meta.php';
+        require_once QYRR_PATH . '/inc/class-qyrr-api-generator.php';
         require_once QYRR_PATH . '/inc/class-qyrr-rest.php';
         require_once QYRR_PATH . '/inc/class-qyrr-shortcode.php';
         qyrr\QYRR_Block_Editor::get_instance();

@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.0.11
+Stable tag: 2.0.12
 
 Create, manage and track fully customizable QR Codes without any Third-Party-APIs.
 
@@ -184,6 +184,9 @@ Simply use the language switcher and translate all settings.
 
 
 == Changelog ==
+= 2.0.12 - 14.07.2026 =
+* Added: REST API endpoint for programmatic QR code generation (Pro).
+
 = 2.0.11 - 11.06.2026 =
 * Fixed: QR Code download button compatibility issue.
 
