@@ -172,7 +172,7 @@ class QYRR_Admin {
      */
     public function set_columns_content( $column, $post_id ) {
         $uploads_directory = wp_upload_dir();
-        $qyrr_directory_url = $uploads_directory['baseurl'] . DIRECTORY_SEPARATOR . 'qyrr' . DIRECTORY_SEPARATOR . $post_id . DIRECTORY_SEPARATOR;
+        $qyrr_directory_url = $uploads_directory['baseurl'] . '/qyrr/' . $post_id . '/';
         $qyrr_directory_path = $uploads_directory['basedir'] . DIRECTORY_SEPARATOR . 'qyrr' . DIRECTORY_SEPARATOR . $post_id . DIRECTORY_SEPARATOR;
         $file_name = apply_filters( 'qyrr_file_name', 'qr-code', $post_id );
         // Check file type.

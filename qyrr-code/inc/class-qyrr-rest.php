@@ -196,7 +196,7 @@ class QYRR_Rest {
      *   title, source (url|post|text|email|phone|sms|whatsapp),
      *   url | post-link | text | email | phone | sms-text | whatsapp-text,
      *   size, fill-color, background-color, error-handling-level (L/M/Q/H),
-     *   quiet-zone, logo-upload, logo-size, position-x, position-y, label-text, font-color
+     *   quiet-zone, logo-upload, logo-size, label-text, font-color
      *
      * Returns: { post_id, image_url }
      */
@@ -218,14 +218,51 @@ class QYRR_Rest {
                 'status' => 400,
             ]);
         }
-        $content = QYRR_Api_Generator::build_content( $source, $params );
-        if ( empty( $content ) ) {
-            return new \WP_Error('qyrr_missing_content', __( 'Missing required source data for this source type.', 'qyrr-code' ), [
+        // Validate required field per source type before building content.
+        $source_required = [
+            'url'      => 'url',
+            'post'     => 'post-link',
+            'text'     => 'text',
+            'email'    => 'email',
+            'phone'    => 'phone',
+            'sms'      => 'phone',
+            'whatsapp' => 'phone',
+        ];
+        $required_param = $source_required[$source] ?? null;
+        if ( $required_param && empty( trim( (string) ($params[$required_param] ?? '') ) ) ) {
+            return new \WP_Error(
+                'qyrr_missing_source_param',
+                /* translators: 1: param name, 2: source type */
+                sprintf( __( 'The "%1$s" parameter is required for source type "%2$s".', 'qyrr-code' ), $required_param, $source ),
+                [
+                    'status' => 400,
+                ]
+            );
+        }
+        if ( $source === 'email' && !is_email( $params['email'] ?? '' ) ) {
+            return new \WP_Error('qyrr_invalid_email', __( 'A valid email address is required.', 'qyrr-code' ), [
                 'status' => 400,
             ]);
         }
-        if ( $source === 'url' && !filter_var( $content, FILTER_VALIDATE_URL ) ) {
-            return new \WP_Error('qyrr_invalid_url', __( 'A valid URL is required.', 'qyrr-code' ), [
+        if ( in_array( $source, ['whatsapp'], true ) ) {
+            $digits_only = preg_replace( '/[^0-9]/', '', $params['phone'] ?? '' );
+            if ( empty( $digits_only ) ) {
+                return new \WP_Error('qyrr_invalid_phone', __( 'A valid phone number (digits only) is required for WhatsApp.', 'qyrr-code' ), [
+                    'status' => 400,
+                ]);
+            }
+        }
+        if ( in_array( $source, ['url', 'post'], true ) ) {
+            $url_param = ( $source === 'url' ? $params['url'] ?? '' : $params['post-link'] ?? '' );
+            if ( !filter_var( esc_url_raw( $url_param ), FILTER_VALIDATE_URL ) ) {
+                return new \WP_Error('qyrr_invalid_url', __( 'A valid URL is required.', 'qyrr-code' ), [
+                    'status' => 400,
+                ]);
+            }
+        }
+        $content = QYRR_Api_Generator::build_content( $source, $params );
+        if ( empty( $content ) ) {
+            return new \WP_Error('qyrr_missing_content', __( 'Missing required source data for this source type.', 'qyrr-code' ), [
                 'status' => 400,
             ]);
         }
@@ -245,8 +282,6 @@ class QYRR_Rest {
             'quiet-zone'    => 0,
             'corner-radius' => 0,
             'logo-size'     => 30,
-            'position-x'    => 50,
-            'position-y'    => 50,
             'min-version'   => 1,
         ];
         // String/color design fields.
@@ -350,8 +385,12 @@ class QYRR_Rest {
         if ( !function_exists( 'WP_Filesystem' ) ) {
             require_once ABSPATH . 'wp-admin/includes/file.php';
         }
-        if ( is_null( $wp_filesystem ) ) {
-            WP_Filesystem();
+        if ( !$wp_filesystem ) {
+            if ( false === WP_Filesystem() ) {
+                return new \WP_Error('qyrr_fs_error', __( 'Could not initialize filesystem.', 'qyrr-code' ), [
+                    'status' => 500,
+                ]);
+            }
         }
         if ( !file_exists( $qyrr_dir ) ) {
             wp_mkdir_p( $qyrr_dir );
@@ -363,7 +402,11 @@ class QYRR_Rest {
                 'status' => 400,
             ]);
         }
-        $wp_filesystem->put_contents( $file_path, $png_data, FS_CHMOD_FILE );
+        if ( false === $wp_filesystem->put_contents( $file_path, $png_data, FS_CHMOD_FILE ) ) {
+            return new \WP_Error('qyrr_write_error', __( 'Could not write QR code image file.', 'qyrr-code' ), [
+                'status' => 500,
+            ]);
+        }
         return $uploads['baseurl'] . '/qyrr/' . $post_id . '/' . wp_basename( $filename ) . '.png';
     }
 

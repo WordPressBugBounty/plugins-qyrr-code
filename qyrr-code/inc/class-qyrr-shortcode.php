@@ -38,7 +38,7 @@ class QYRR_Shortcode {
 		}
 
 		$uploads_directory = wp_upload_dir();
-		$dir_url           = $uploads_directory['baseurl'] . DIRECTORY_SEPARATOR . 'qyrr' . DIRECTORY_SEPARATOR . $atts['code'] . DIRECTORY_SEPARATOR;
+		$dir_url           = $uploads_directory['baseurl'] . '/qyrr/' . $atts['code'] . '/';
 		$dir_path          = $uploads_directory['basedir'] . DIRECTORY_SEPARATOR . 'qyrr' . DIRECTORY_SEPARATOR . $atts['code'] . DIRECTORY_SEPARATOR;
 		$file_name         = apply_filters( 'qyrr_file_name', 'qr-code', $atts['code'] );
 
